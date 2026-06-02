@@ -1,5 +1,5 @@
 import { apiClient } from './api';
-import { Delivery } from '../types/delivery';
+import { Delivery, StatusTimeline } from '../types/delivery';
 
 export interface CreateDeliveryPayload {
   pickupAddress: string;
@@ -22,10 +22,10 @@ export const deliveriesService = {
     return data;
   },
 
-  createDelivery: async (
-    payload: CreateDeliveryPayload,
-  ): Promise<Delivery> => {
-    const { data } = await apiClient.post<Delivery>('/deliveries', payload);
+  getStatusTimeline: async (deliveryId: string): Promise<StatusTimeline> => {
+    const { data } = await apiClient.get<StatusTimeline>(
+      `/deliveries/${deliveryId}/timeline`
+    );
     return data;
-  },
+  }
 };
