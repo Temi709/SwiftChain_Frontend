@@ -204,7 +204,7 @@ export default function DisputeForm({
   walletAddress,
   onSuccess,
   onError,
-}: DisputeFormProps): ReactElement {
+}: DisputeFormProps): ReactElement | null {
   const {
     register,
     handleSubmit,
